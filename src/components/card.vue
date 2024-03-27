@@ -35,7 +35,7 @@ const props = defineProps({
   },
 });
 
-let cardIsHoveredOrFocused = ref(false);
+let cardHoveredOrButtonFocused = ref(false);
 let onMobile = ref(false);
 let activeImage = ref(0);
 
@@ -78,8 +78,8 @@ function formatPrice(price) {
   <div
     id="card"
     class="relative"
-    @mouseenter="cardIsHoveredOrFocused = true"
-    @mouseleave="cardIsHoveredOrFocused = false"
+    @mouseenter="cardHoveredOrButtonFocused = true"
+    @mouseleave="cardHoveredOrButtonFocused = false"
     data-cy="card"
   >
     <div id="image-carousel">
@@ -145,16 +145,16 @@ function formatPrice(price) {
         v-if="imageSource.length > 1"
         class="absolute top-1/2 flex w-full justify-between transition-all duration-200 ease-in-out"
         :class="{
-          'scale-100 opacity-100': cardIsHoveredOrFocused || onMobile,
-          'scale-90 opacity-0': !cardIsHoveredOrFocused && !onMobile,
+          'scale-100 opacity-100': cardHoveredOrButtonFocused || onMobile,
+          'scale-90 opacity-0': !cardHoveredOrButtonFocused && !onMobile,
         }"
       >
         <button
           @click="prevImage()"
           class="-ml-4 h-9 w-9 cursor-pointer rounded-full bg-brand-accent p-2 text-white shadow-md xl:-ml-6 xl:h-11 xl:w-11 xl:p-3"
           aria-label="'Go to previous image'"
-          @focus="cardIsHoveredOrFocused = true"
-          @blur="cardIsHoveredOrFocused = false"
+          @focus="cardHoveredOrButtonFocused = true"
+          @blur="cardHoveredOrButtonFocused = false"
           data-cy="previous-image"
         >
           <span class="icon-[mingcute--arrow-left-fill] h-5 w-5"></span>
@@ -163,8 +163,8 @@ function formatPrice(price) {
           @click="nextImage()"
           class="-mr-4 h-9 w-9 cursor-pointer rounded-full bg-brand-accent p-2 text-white shadow-md xl:-mr-6 xl:h-11 xl:w-11 xl:p-3"
           aria-label="'Go to next image'"
-          @focus="cardIsHoveredOrFocused = true"
-          @blur="cardIsHoveredOrFocused = false"
+          @focus="cardHoveredOrButtonFocused = true"
+          @blur="cardHoveredOrButtonFocused = false"
           data-cy="next-image"
         >
           <span class="icon-[mingcute--arrow-right-fill] h-5 w-5"></span>
