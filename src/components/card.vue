@@ -35,6 +35,11 @@ const props = defineProps({
   },
 });
 
+const amenityStyling =
+  'flex h-10 w-16 flex-row items-center justify-center rounded-full bg-white p-2';
+const buttonStyling =
+  'h-9 w-9 cursor-pointer rounded-full bg-brand-accent p-2 text-white shadow-md xl:h-11 xl:w-11 xl:p-3';
+
 let cardHoveredOrButtonFocused = ref(false);
 let onMobile = ref(false);
 let activeImage = ref(0);
@@ -52,7 +57,7 @@ function currentImage() {
   return props.imageSource[activeImage.value];
 }
 
-function prevImage() {
+function previousImage() {
   activeImage.value =
     activeImage.value === 0
       ? props.imageSource.length - 1
@@ -95,19 +100,13 @@ function formatPrice(price) {
         class="absolute top-0 m-4 flex flex-wrap gap-2 font-bodyBold"
         data-cy="amenities"
       >
-        <div
-          id="guest-capacity"
-          class="flex h-10 w-16 flex-row items-center justify-center rounded-full bg-white p-2"
-        >
+        <div id="guest-capacity" :class="amenityStyling">
           <span class="icon-[mingcute--group-2-fill]"></span>
           <p class="ml-1.5" aria-label="'Guest capacity'" data-cy="capacity">
             {{ guestCapacity }}
           </p>
         </div>
-        <div
-          id="bedrooms"
-          class="flex h-10 w-16 flex-row items-center justify-center rounded-full bg-white p-2"
-        >
+        <div id="bedrooms" :class="amenityStyling">
           <span class="icon-[mingcute--bed-fill] h-5 w-5"></span>
           <p
             class="ml-1.5"
@@ -117,10 +116,7 @@ function formatPrice(price) {
             {{ bedrooms }}
           </p>
         </div>
-        <div
-          id="bathrooms"
-          class="flex h-10 w-16 flex-row items-center justify-center rounded-full bg-white p-2"
-        >
+        <div id="bathrooms" :class="amenityStyling">
           <span class="icon-[mingcute--bath-fill] h-5 w-5"></span>
           <p
             class="ml-1.5"
@@ -133,7 +129,7 @@ function formatPrice(price) {
         <div
           id="wifi"
           v-if="wifi"
-          class="flex h-10 w-16 flex-row items-center justify-center rounded-full bg-white p-2"
+          :class="amenityStyling"
           aria-label="'Has wifi'"
           data-cy="wifi"
         >
@@ -150,8 +146,9 @@ function formatPrice(price) {
         }"
       >
         <button
-          @click="prevImage()"
-          class="-ml-4 h-9 w-9 cursor-pointer rounded-full bg-brand-accent p-2 text-white shadow-md xl:-ml-6 xl:h-11 xl:w-11 xl:p-3"
+          @click="previousImage()"
+          :class="buttonStyling"
+          class="-ml-4 xl:-ml-6"
           aria-label="'Go to previous image'"
           @focus="cardHoveredOrButtonFocused = true"
           @blur="cardHoveredOrButtonFocused = false"
@@ -161,7 +158,8 @@ function formatPrice(price) {
         </button>
         <button
           @click="nextImage()"
-          class="-mr-4 h-9 w-9 cursor-pointer rounded-full bg-brand-accent p-2 text-white shadow-md xl:-mr-6 xl:h-11 xl:w-11 xl:p-3"
+          :class="buttonStyling"
+          class="-mr-4 xl:-mr-6"
           aria-label="'Go to next image'"
           @focus="cardHoveredOrButtonFocused = true"
           @blur="cardHoveredOrButtonFocused = false"
