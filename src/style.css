@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Wix-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/WixMadeforDisplay-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Wix-Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/WixMadeforDisplay-Bold.ttf');
+}
