@@ -36,7 +36,7 @@ const props = defineProps({
 });
 
 const amenityStyling =
-  'flex h-10 w-16 flex-row items-center justify-center rounded-full bg-white p-2';
+  'flex h-10 w-16 flex-row items-center justify-center rounded-full bg-white p-2 shadow-sm';
 const buttonStyling =
   'h-9 w-9 cursor-pointer rounded-full bg-brand-accent p-2 text-white shadow-md xl:h-11 xl:w-11 xl:p-3';
 
@@ -171,7 +171,7 @@ function formatPrice(price) {
     </div>
     <div
       id="card-info-bg"
-      class="absolute bottom-0 left-0 right-0 m-4 flex h-1/5 flex-col justify-center rounded-3xl bg-white"
+      class="absolute bottom-0 left-0 right-0 m-4 flex h-1/5 flex-col justify-center rounded-3xl bg-white shadow-sm"
     >
       <div id="card-info-content" class="m-6 font-body">
         <h1
